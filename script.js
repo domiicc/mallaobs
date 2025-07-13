@@ -108,11 +108,8 @@ const data = [
     },
 ];
 
-// Mapa de estado: 'bloqueado', 'desbloqueado', 'aprobado'
 const estadoRamos = {};
 const indexRamos = {};
-
-// Lista de todos los ramos menos los dos últimos
 const ramosObligatoriosParaTitulo = data
     .flatMap(sem => sem.ramos)
     .filter(r => r.nombre !== "Trabajo de Titulación" && r.nombre !== "Examen de Título")
@@ -129,7 +126,6 @@ function inicializarIndices() {
 
 function requisitosEspeciales(nombre) {
     if (nombre === "Trabajo de Titulación" || nombre === "Examen de Título") {
-        // Pendientes para estos ramos: todos los que no están aprobados entre los anteriores
         return ramosObligatoriosParaTitulo.filter(r => estadoRamos[r] !== "aprobado");
     }
     return null;
@@ -169,9 +165,7 @@ function renderizarMalla() {
             divRamo.className = "ramo " + estadoRamos[ramo.nombre];
             divRamo.textContent = ramo.nombre;
 
-            // Tooltip
             let tooltipText = "";
-
             const especiales = requisitosEspeciales(ramo.nombre);
             if (especiales !== null) {
                 if (especiales.length === 0) {
@@ -184,7 +178,6 @@ function renderizarMalla() {
             } else {
                 tooltipText = "Requisitos:\n" + ramo.requisitos.join("\n");
             }
-
             divRamo.setAttribute("data-tooltip", tooltipText);
 
             if (estadoRamos[ramo.nombre] === "desbloqueado") {
