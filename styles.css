@@ -1,0 +1,81 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 15px;
+  background: #1e1e1e;
+  color: white;
+  user-select: none;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 5px;
+}
+
+p {
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 20px;
+  color: #ddd;
+}
+
+#malla-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+
+/* Cada semestre es una columna */
+.semestre {
+  background: #2a2a2a;
+  border-radius: 10px;
+  padding: 10px;
+  width: 280px;
+  box-shadow: 0 0 12px #b22222aa;
+}
+
+.semestre h2 {
+  text-align: center;
+  border-bottom: 2px solid #b22222;
+  padding-bottom: 8px;
+  margin-bottom: 12px;
+  color: #ff6347;
+}
+
+/* Ramo */
+.ramo {
+  background-color: #b22222; /* rojo bloqueo */
+  color: white;
+  padding: 10px 15px;
+  margin: 6px 0;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  box-shadow: 0 0 5px #b22222cc;
+  transition: all 0.3s ease;
+  user-select: none;
+}
+
+.ramo.bloqueado {
+  cursor: not-allowed;
+  opacity: 0.6;
+  box-shadow: 0 0 4px #800000cc;
+}
+
+.ramo.desbloqueado {
+  background-color: #ff7f50; /* naranja */
+  box-shadow: 0 0 8px #ff7f50cc;
+  cursor: pointer;
+}
+
+.ramo.aprobado {
+  background-color: #3cb371; /* verde */
+  box-shadow: 0 0 10px #3cb371cc;
+  cursor: default;
+  text-decoration: line-through;
+}
+
+.ramo:hover:not(.bloqueado):not(.aprobado) {
+  filter: brightness(1.15);
+  box-shadow: 0 0 12px #ff6347;
+}
