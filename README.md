@@ -1,2 +1,0 @@
-# mallaobs
-malla
