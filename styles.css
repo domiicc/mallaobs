@@ -1,81 +1,75 @@
 body {
-  font-family: Arial, sans-serif;
-  margin: 15px;
-  background: #1e1e1e;
-  color: white;
-  user-select: none;
+    font-family: Arial, sans-serif;
+    background-color: #ffe4e1;
+    color: #333;
+    padding: 20px;
 }
 
 h1 {
-  text-align: center;
-  margin-bottom: 5px;
+    text-align: center;
+    color: #c71585;
 }
 
-p {
-  text-align: center;
-  margin-top: 0;
-  margin-bottom: 20px;
-  color: #ddd;
-}
-
-#malla-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 30px;
-}
-
-/* Cada semestre es una columna */
 .semestre {
-  background: #2a2a2a;
-  border-radius: 10px;
-  padding: 10px;
-  width: 280px;
-  box-shadow: 0 0 12px #b22222aa;
+    margin-bottom: 30px;
 }
 
 .semestre h2 {
-  text-align: center;
-  border-bottom: 2px solid #b22222;
-  padding-bottom: 8px;
-  margin-bottom: 12px;
-  color: #ff6347;
+    color: #d87093;
+    border-bottom: 2px solid #d87093;
+    padding-bottom: 5px;
 }
 
-/* Ramo */
 .ramo {
-  background-color: #b22222; /* rojo bloqueo */
-  color: white;
-  padding: 10px 15px;
-  margin: 6px 0;
-  border-radius: 6px;
-  cursor: pointer;
-  font-weight: 600;
-  box-shadow: 0 0 5px #b22222cc;
-  transition: all 0.3s ease;
-  user-select: none;
-}
-
-.ramo.bloqueado {
-  cursor: not-allowed;
-  opacity: 0.6;
-  box-shadow: 0 0 4px #800000cc;
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 5px;
+    position: relative;
+    transition: background-color 0.3s;
+    user-select: none;
 }
 
 .ramo.desbloqueado {
-  background-color: #ff7f50; /* naranja */
-  box-shadow: 0 0 8px #ff7f50cc;
-  cursor: pointer;
+    background-color: #ff6f91;
+    color: #fff;
+    cursor: pointer;
 }
 
 .ramo.aprobado {
-  background-color: #3cb371; /* verde */
-  box-shadow: 0 0 10px #3cb371cc;
-  cursor: default;
-  text-decoration: line-through;
+    background-color: #8a2be2;
+    color: #fff;
+    cursor: pointer;
 }
 
-.ramo:hover:not(.bloqueado):not(.aprobado) {
-  filter: brightness(1.15);
-  box-shadow: 0 0 12px #ff6347;
+.ramo.bloqueado {
+    background-color: #d3d3d3;
+    color: #999;
+    cursor: not-allowed;
+}
+
+/* Tooltip styling */
+.ramo::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 120%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #333;
+    color: #fff;
+    padding: 6px 10px;
+    white-space: pre-line;
+    border-radius: 5px;
+    opacity: 0;
+    pointer-events: none;
+    font-size: 13px;
+    line-height: 1.2;
+    width: max-content;
+    max-width: 300px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    transition: opacity 0.3s ease;
+    z-index: 1000;
+}
+
+.ramo:hover::after {
+    opacity: 1;
 }
