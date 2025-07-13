@@ -1,13 +1,13 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #ffe4e1;
+    background-color: #ffe4e1; /* fondo rosado suave */
     color: #333;
     padding: 20px;
 }
 
 h1 {
     text-align: center;
-    color: #c71585;
+    color: #c71585; /* rosa fuerte */
 }
 
 .semestre {
@@ -15,7 +15,7 @@ h1 {
 }
 
 .semestre h2 {
-    color: #d87093;
+    color: #d87093; /* rosa medio */
     border-bottom: 2px solid #d87093;
     padding-bottom: 5px;
 }
@@ -30,19 +30,19 @@ h1 {
 }
 
 .ramo.desbloqueado {
-    background-color: #ff6f91;
+    background-color: #ffaeb9; /* rosado */
     color: #fff;
     cursor: pointer;
 }
 
 .ramo.aprobado {
-    background-color: #8a2be2;
+    background-color: #ba55d3; /* morado */
     color: #fff;
     cursor: pointer;
 }
 
 .ramo.bloqueado {
-    background-color: #d3d3d3;
+    background-color: #d3d3d3; /* gris */
     color: #999;
     cursor: not-allowed;
 }
