@@ -108,10 +108,11 @@ const data = [
     },
 ];
 
+// Mapa de estado: 'bloqueado', 'desbloqueado', 'aprobado'
 const estadoRamos = {};
 const indexRamos = {};
 
-// Lista de todos los ramos excepto Trabajo de Titulación y Examen de Título
+// Lista de todos los ramos menos los dos últimos
 const ramosObligatoriosParaTitulo = data
     .flatMap(sem => sem.ramos)
     .filter(r => r.nombre !== "Trabajo de Titulación" && r.nombre !== "Examen de Título")
@@ -128,8 +129,8 @@ function inicializarIndices() {
 
 function requisitosEspeciales(nombre) {
     if (nombre === "Trabajo de Titulación" || nombre === "Examen de Título") {
-        const pendientes = ramosObligatoriosParaTitulo.filter(r => estadoRamos[r] !== "aprobado");
-        return pendientes;
+        // Pendientes para estos ramos: todos los que no están aprobados entre los anteriores
+        return ramosObligatoriosParaTitulo.filter(r => estadoRamos[r] !== "aprobado");
     }
     return null;
 }
@@ -188,12 +189,13 @@ function renderizarMalla() {
 
             if (estadoRamos[ramo.nombre] === "desbloqueado") {
                 divRamo.style.cursor = "pointer";
-                divRamo.addEventListener("click", () => aprobarRamo(ramo.nombre));
+                divRamo.onclick = () => aprobarRamo(ramo.nombre);
             } else if (estadoRamos[ramo.nombre] === "aprobado") {
                 divRamo.style.cursor = "pointer";
-                divRamo.addEventListener("click", () => desaprobarRamo(ramo.nombre));
+                divRamo.onclick = () => desaprobarRamo(ramo.nombre);
             } else {
                 divRamo.style.cursor = "not-allowed";
+                divRamo.onclick = null;
             }
 
             divSem.appendChild(divRamo);
